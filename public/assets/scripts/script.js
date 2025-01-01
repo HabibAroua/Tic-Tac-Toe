@@ -33,14 +33,38 @@ function isAllElementsNotEmpty()
                 isElementNotEmty(bt7) && isElementNotEmty(bt8) && isElementNotEmty(bt9)
 }
 
+function equal(bt, char)
+{
+    return bt.value === char;
+}
+function win(char)
+{
+    possibilty1 = equal(bt1, char) && equal(bt2, char) && equal(bt3, char);
+    possibilty2 = equal(bt1, char) && equal(bt4, char) && equal(bt7, char);
+    possibilty3 = equal(bt7, char) && equal(bt8, char) && equal(bt9, char);
+    possibilty4 = equal(bt9, char) && equal(bt6, char) && equal(bt3, char);
+    possibilty5 = equal(bt3, char) && equal(bt5, char) && equal(bt7, char);
+    possibilty6 = equal(bt1, char) && equal(bt5, char) && equal(bt9, char);
+
+    return possibilty1 || possibilty2 || possibilty3 || possibilty4 || possibilty5 
+            || possibilty6
+}
 function fill(bt)
 {
     bt.value = getChar();
     bt.disabled = true;
-    if(isAllElementsNotEmpty())
+    //verify who is the winner
+    if(win("X"))
     {
-        alert("End game");
+        alert("X player won");
     }
+    else if(win("O"))
+    {
+        alert("O won");
+    }
+
+    if(isAllElementsNotEmpty())
+        alert("Null");
 }
 
 bt1.onclick = function()
