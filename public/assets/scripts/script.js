@@ -49,6 +49,20 @@ function win(char)
     return possibilty1 || possibilty2 || possibilty3 || possibilty4 || possibilty5 
             || possibilty6
 }
+
+function disabledAll()
+{
+    bt1.disabled = true;
+    bt2.disabled = true;
+    bt3.disabled = true;
+    bt4.disabled = true;
+    bt5.disabled = true;
+    bt6.disabled = true;
+    bt7.disabled = true;
+    bt8.disabled = true;
+    bt9.disabled = true;
+}
+
 function fill(bt)
 {
     bt.value = getChar();
@@ -57,10 +71,12 @@ function fill(bt)
     if(win("X"))
     {
         alert("X player won");
+        disabledAll();
     }
     else if(win("O"))
     {
         alert("O won");
+        disabledAll();
     }
 
     if(isAllElementsNotEmpty())
