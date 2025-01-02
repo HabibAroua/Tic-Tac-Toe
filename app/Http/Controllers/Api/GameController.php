@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Game;
+use Validator;
 
 class GameController extends Controller
 {
@@ -39,7 +40,7 @@ class GameController extends Controller
             return response()->json
             (
                 [
-                    'message' => "Inserted",
+                    'message' => "Saved",
                     'data' => $game,
                 ], 201
             );
