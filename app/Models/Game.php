@@ -14,4 +14,10 @@ class Game extends Model
         'played_at',
         'result'
     ];
+
+    protected $hidden = 
+    [
+        'created_at',
+        'updated_at'
+    ];
 }
