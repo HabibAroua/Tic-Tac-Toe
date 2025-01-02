@@ -31,7 +31,7 @@ class GameController extends Controller
         }
         else
         {
-            //save the game if the input is valid
+            //save the game in Database if the input is valid
             $game = new Game();
             $game->played_at = $request->played_at;
             $game->result=  $request->result;
