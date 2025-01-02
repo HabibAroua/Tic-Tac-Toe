@@ -127,3 +127,27 @@ bt9.onclick = function()
 {
     fill(bt9);
 }
+
+let popup = document.getElementById('popup');
+let btConsultLeadboard = document.getElementById('btConsultLeadboard');
+let btClose = document.getElementById('btClose');
+
+function openPopup()
+{
+    popup.classList.add('open-popup');
+}
+
+function closePopup()
+{
+    popup.classList.remove('open-popup');
+}
+
+btConsultLeadboard.onclick = function()
+{
+    openPopup();
+}
+
+btClose.onclick = function()
+{
+    closePopup();
+}
