@@ -1,3 +1,7 @@
+//const Game = require('./models/Game.js');
+//started time
+let date = new Date();
+
 let bt1 = document.getElementById('bt1');
 let bt2 = document.getElementById('bt2');
 let bt3 = document.getElementById('bt3');
@@ -70,17 +74,25 @@ function fill(bt)
     //verify who is the winner
     if(win("X"))
     {
+        const game = new Game(date, 'X');
+        game.save();
         alert("X player won");
         disabledAll();
     }
     else if(win("O"))
     {
+        const game = new Game(date, 'O');
+        game.save();
         alert("O won");
         disabledAll();
     }
 
     if(isAllElementsNotEmpty())
+    {
+        const game = new Game(date, 'Draw');
+        game.save();
         alert("Null");
+    }
 }
 
 bt1.onclick = function()
