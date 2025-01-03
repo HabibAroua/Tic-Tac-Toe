@@ -22,9 +22,15 @@
         <button id="btConsultLeadboard">Consult leadboard</button>
         <div class="popup" id="popup">
                 <h2>Leaderboard</h2>
-                <p>
-                    Your details has been successfully submitted. Thanks!
-                </p>
+                <table id="leaderboardTable">
+                    <thead>
+                        <tr>
+                            <th>Played at</th>
+                            <th>Result</th>
+                        </tr>
+                    </<thead>
+                    <tbody></tbody>
+                </table>
                 <button id="btClose" type="button">
                     OK
                 </button>

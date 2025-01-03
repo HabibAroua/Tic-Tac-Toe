@@ -71,17 +71,20 @@ function fill(bt)
 {
     bt.value = getChar();
     bt.disabled = true;
+    game = new Game();
     //verify who is the winner
     if(win("X"))
     {
-        const game = new Game(date, 'X');
+        game.setPlayed_at(date);
+        game.setResult('X');
         game.save();
         alert("X player won");
         disabledAll();
     }
     else if(win("O"))
     {
-        const game = new Game(date, 'O');
+        game.setPlayed_at(date);
+        game.setResult('O');
         game.save();
         alert("O won");
         disabledAll();
@@ -89,10 +92,14 @@ function fill(bt)
 
     if(isAllElementsNotEmpty())
     {
-        const game = new Game(date, 'Draw');
+        game.setPlayed_at(date);
+        game.setResult('Draw');
         game.save();
         alert("Null");
     }
+    
+    data = game.getLeadboard();
+    data.then(data => console.log(data));
 }
 
 bt1.onclick = function()
@@ -144,6 +151,30 @@ let popup = document.getElementById('popup');
 let btConsultLeadboard = document.getElementById('btConsultLeadboard');
 let btClose = document.getElementById('btClose');
 
+function populateLeaderboardTable(data) {
+    const tableBody = document.querySelector('#leaderboardTable tbody');
+    tableBody.innerHTML = ''; // Clear existing table rows
+
+    // Loop through each entry in the data array and create table rows
+    data.forEach(item => {
+      const row = document.createElement('tr');
+      const resultCell = document.createElement('td');
+      const playedAtCell = document.createElement('td');
+
+      // Add data to cells
+      resultCell.textContent = item.result;   // Assume the data has a "result" field
+      playedAtCell.textContent = item.played_at; // Assume the data has a "playedAt" field
+
+      // Append cells to the row
+      row.appendChild(playedAtCell);
+      row.appendChild(resultCell);
+      
+
+      // Append the row to the table body
+      tableBody.appendChild(row);
+    });
+  }
+
 function openPopup()
 {
     popup.classList.add('open-popup');
@@ -156,6 +187,14 @@ function closePopup()
 
 btConsultLeadboard.onclick = function()
 {
+    const game = new Game();
+    game.getLeadboard()
+      .then(data => {
+        populateLeaderboardTable(data); // Populate the table with fetched data
+      })
+      .catch(error => {
+        console.error('Error in fetching leaderboard:', error);
+      });
     openPopup();
 }
 

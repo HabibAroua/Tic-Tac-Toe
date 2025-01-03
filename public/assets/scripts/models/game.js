@@ -1,13 +1,17 @@
 class Game
 {
-    constructor(played_at, result)
+    setPlayed_at(played_at)
     {
         //validate if played_at is a date
         if(isNaN(Date.parse(played_at)))
         {
             throw new Error('Invalid played_at date');
         }
+        this.played_at = this.formatDate(played_at);
+    }
 
+    setResult(result)
+    {
         //validate result which should be 'X', 'O' or 'Draw'
         const validResults = ['X', 'O', 'Draw'];
         if(!validResults.includes(result))
@@ -15,7 +19,7 @@ class Game
             throw new Error('Invalid result. It must be "X", "O", or "Draw"');
         }
 
-        this.played_at = this.formatDate(played_at);
+        
         this.result = result;
     }
 
@@ -70,5 +74,53 @@ class Game
         { 
             console.error('Error saving the game:', error); 
         }  
+    }
+
+    /*getLeadboard()
+    {
+        fetch('/api/game/leadboard')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(data => {
+          console.log('Leaderboard Data:', data.data);
+          return data.data;
+          // You can use the leaderboard data, for example, render it on the page
+          // Example: renderLeaderboard(data);
+        })
+        .catch(error => {
+          console.error('Error fetching leaderboard:', error);
+        });
+    }*/
+
+    async getLeadboard()
+    {
+        try 
+        {
+            const response = await fetch
+                            (
+                                '/api/game/leadboard', 
+                                {
+                                    method: 'GET', 
+                                    headers: 
+                                    { 
+                                        'Content-Type': 'application/json', 
+                                    }
+                                }
+                            );
+            if (response.status !== 200)
+            { 
+                throw new Error('Failed to retrive the list'); 
+            } 
+            const data = await response.json(); 
+            return data.data;
+        } 
+        catch (error) 
+        { 
+            console.error('Error saving the game:', error); 
+        }
     }
 }
