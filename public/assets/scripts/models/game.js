@@ -119,7 +119,7 @@ class Game
             return data.data;
         } 
         catch (error) 
-        { 
+        {
             console.error('Error saving the game:', error); 
         }
     }

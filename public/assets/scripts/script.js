@@ -86,7 +86,7 @@ function fill(bt)
         game.setPlayed_at(date);
         game.setResult('O');
         game.save();
-        alert("O won");
+        alert("O player won");
         disabledAll();
     }
 
@@ -95,7 +95,7 @@ function fill(bt)
         game.setPlayed_at(date);
         game.setResult('Draw');
         game.save();
-        alert("Null");
+        alert("Draw");
     }
     
     data = game.getLeadboard();
@@ -151,28 +151,32 @@ let popup = document.getElementById('popup');
 let btConsultLeadboard = document.getElementById('btConsultLeadboard');
 let btClose = document.getElementById('btClose');
 
-function populateLeaderboardTable(data) {
+function populateLeaderboardTable(data) 
+{
     const tableBody = document.querySelector('#leaderboardTable tbody');
     tableBody.innerHTML = ''; // Clear existing table rows
 
     // Loop through each entry in the data array and create table rows
-    data.forEach(item => {
-      const row = document.createElement('tr');
-      const resultCell = document.createElement('td');
-      const playedAtCell = document.createElement('td');
+    data.forEach
+    (
+        item => 
+        {
+            const row = document.createElement('tr');
+            const resultCell = document.createElement('td');
+            const playedAtCell = document.createElement('td');
 
-      // Add data to cells
-      resultCell.textContent = item.result;   // Assume the data has a "result" field
-      playedAtCell.textContent = item.played_at; // Assume the data has a "playedAt" field
+            // Add data to cells
+            resultCell.textContent = item.result;   // Assume the data has a "result" field
+            playedAtCell.textContent = item.played_at; // Assume the data has a "playedAt" field
 
-      // Append cells to the row
-      row.appendChild(playedAtCell);
-      row.appendChild(resultCell);
-      
-
-      // Append the row to the table body
-      tableBody.appendChild(row);
-    });
+            // Append cells to the row
+            row.appendChild(playedAtCell);
+            row.appendChild(resultCell);
+            
+            // Append the row to the table body
+            tableBody.appendChild(row);
+        }
+    );
   }
 
 function openPopup()
