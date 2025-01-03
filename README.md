@@ -1,66 +1,90 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<h1>Tic Tac Toe</h1>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+<h4>Introduction</h4>
 
-## About Laravel
+Tic Tac Toe is a simple web-based game built using Laravel for the backend and vanilla JavaScript for the frontend. It allows two players to play the classic game of Tic Tac Toe on a 3x3 grid, with a leaderboard to keep track of the game results. The game features SweetAlert2 for notifications and a clean, interactive interface.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<h4>Features:</h4>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+    Real-time Gameplay: Players take turns marking spaces on a 3x3 grid.
+    Winner Detection: The game automatically detects the winner or a draw.
+    Leaderboard: View the results of previous games, including the date of play and the result.
+    Responsive Design: Optimized for both desktop and mobile views.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+<h4>Installation</h4>
 
-## Learning Laravel
+To get started with the Tic Tac Toe project, follow these steps:
+1. Clone the repository:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+git clone https://github.com/HabibAroua/Tic-Tac-Toe
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+2. Install dependencies:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Navigate to the project directory and install the necessary PHP and JavaScript dependencies.
+For Laravel (Backend):
 
-## Laravel Sponsors
+cd tic-tac-toe
+composer install
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+For JavaScript (Frontend):
 
-### Premium Partners
+3. Set up the environment:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+Copy the .env.example file to .env and configure your database connection.
 
-## Contributing
+cp .env.example .env
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Then, generate the application key:
 
-## Code of Conduct
+php artisan key:generate
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+4. Run migrations:
 
-## Security Vulnerabilities
+If your application uses a database (for saving scores or leaderboard data), run the migrations:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+php artisan migrate
 
-## License
+5. Start the application:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+You can start the development server with the following command:
+
+php artisan serve
+
+The application should now be running at http://localhost:8000.
+Technical Choices
+1. Laravel (Backend):
+
+    Framework: Laravel is used for the backend to handle routing, database operations, and RESTful API.
+    Database: Uses a MySQL or SQLite database to store the game results and leaderboard data.
+    Authentication: Laravel’s built-in authentication system can be used if needed for user-specific game records.
+
+2. SweetAlert2 (Frontend Alerts):
+
+    SweetAlert2 is used to show visually appealing popups for announcing game results (win, draw) and showing the leaderboard.
+
+3. JavaScript (Game Logic):
+
+    Vanilla JavaScript is used to handle the gameplay logic, such as tracking turns, detecting wins, and handling button interactions.
+    Event Listeners are added to handle player moves and update the UI accordingly.
+
+4. Blade Templating (Frontend):
+
+    The front-end uses Blade templating engine, which integrates seamlessly with Laravel. The layout is designed for both desktop and mobile screens, using simple HTML and CSS.
+
+5. CSS:
+
+    Basic styling is provided in the assets/styles/style.css file. It ensures the game layout is responsive and visually appealing across devices.
+
+<h4>How to Play:</h4>
+
+    Open the game in your browser.
+    Click on any empty spot on the 3x3 grid to place your mark ("X" or "O").
+    The game will automatically check if there is a winner or a draw after each move.
+    After the game ends, you can view the leaderboard by clicking the Consult Leaderboard button.
+
+<h4>Contributions</h4>
+
+If you want to contribute to this project, feel free to fork the repository, make your changes, and submit a pull request.
+License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
