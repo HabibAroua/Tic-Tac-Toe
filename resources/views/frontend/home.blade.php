@@ -31,5 +31,5 @@
             </div>
     </div>
 </div>
-<script src="{{ asset('assets/scripts/models/Game.js') }}"></script>
+<script src="{{ asset('assets/scripts/models/game.js') }}"></script>
 <script src="{{ asset('assets/scripts/script.js') }}"></script>
