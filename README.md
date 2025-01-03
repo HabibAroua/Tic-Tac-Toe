@@ -1,4 +1,4 @@
-<h1>Tic Tac Toe</h1>
+<h1>Tic Tac Toe Game</h1>
 
 <h4>Introduction</h4>
 
@@ -13,6 +13,10 @@ Leaderboard: View the results of previous games, including the date of play and 
 Responsive Design: Optimized for both desktop and mobile views.
 
 <h4>Installation</h4>
+
+<h5>Version</h5>
+<span>Laravel</span> : version 9
+<span>PHP</span> : 8.0
 
 To get started with the Tic Tac Toe project, follow these steps:
 1. Clone the repository:
