@@ -1,4 +1,5 @@
 @extends('frontend.master')
+@section('content')
 <div class="container">
     <div class="zone">
         <h1>Tic Tac Toe</h1>
@@ -28,7 +29,7 @@
                             <th>Played at</th>
                             <th>Result</th>
                         </tr>
-                    </<thead>
+                    </thead>
                     <tbody></tbody>
                 </table>
                 <button id="btClose" type="button">
@@ -39,3 +40,4 @@
 </div>
 <script src="{{ asset('assets/scripts/models/game.js') }}"></script>
 <script src="{{ asset('assets/scripts/script.js') }}"></script>
+@endsection
