@@ -193,12 +193,20 @@ btConsultLeadboard.onclick = function()
 {
     const game = new Game();
     game.getLeadboard()
-      .then(data => {
-        populateLeaderboardTable(data); // Populate the table with fetched data
-      })
-      .catch(error => {
-        console.error('Error in fetching leaderboard:', error);
-      });
+    .then
+        (
+            data => 
+            {
+                populateLeaderboardTable(data); // Populate the table with fetched data
+            }
+        )
+      .catch
+      (
+        error => 
+        {
+            console.error('Error in fetching leaderboard:', error);
+        }
+    );
     openPopup();
 }
 
