@@ -67,6 +67,26 @@ function disabledAll()
     bt9.disabled = true;
 }
 
+function showWinnerAlert(winner) 
+{
+    Swal.fire
+    (
+        {
+            title: 'Game Over!',
+            text: `${winner} wins!`,
+            icon: 'success',
+            confirmButtonText: 'Play Again'
+        }
+    ).
+    then
+    (
+        () => 
+        {
+            location.reload(); // Refresh the page
+        }
+    );
+}
+
 function fill(bt)
 {
     bt.value = getChar();
@@ -78,7 +98,8 @@ function fill(bt)
         game.setPlayed_at(date);
         game.setResult('X');
         game.save();
-        alert("X player won");
+        //alert("X player won");
+        showWinnerAlert('X'); 
         disabledAll();
     }
     else if(win("O"))
@@ -86,7 +107,8 @@ function fill(bt)
         game.setPlayed_at(date);
         game.setResult('O');
         game.save();
-        alert("O player won");
+        //alert("O player won");
+        showWinnerAlert('O');
         disabledAll();
     }
 
@@ -95,11 +117,9 @@ function fill(bt)
         game.setPlayed_at(date);
         game.setResult('Draw');
         game.save();
-        alert("Draw");
+        //alert("Draw");
+        showWinnerAlert('Draw');
     }
-    
-    data = game.getLeadboard();
-    data.then(data => console.log(data));
 }
 
 bt1.onclick = function()
