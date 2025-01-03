@@ -8,6 +8,7 @@ Tic Tac Toe is a simple web-based game built using Laravel for the backend and v
 
     Real-time Gameplay: Players take turns marking spaces on a 3x3 grid.
     Winner Detection: The game automatically detects the winner or a draw.
+    
     Leaderboard: View the results of previous games, including the date of play and the result.
     Responsive Design: Optimized for both desktop and mobile views.
 
